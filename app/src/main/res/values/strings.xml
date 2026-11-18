@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Hardik Buds Pro</string>
+    <string name="brand_full_title">HARDIK BUDS PRO ULTRA</string>
+    <string name="copyright_notice">© 2026 HARDIK BUDS PRO. All Rights Reserved.</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_audio">Audio Studio</string>
+    <string name="nav_controls">Controls</string>
+    <string name="nav_find_my">Find My</string>
+    <string name="nav_security">Security</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="bt_status_disabled">Bluetooth is turned off</string>
+    <string name="bt_status_unavailable">Bluetooth hardware unavailable on this device</string>
+    <string name="bt_status_disconnected">No earbuds connected</string>
+    <string name="bt_scan_start">Scan Nearby</string>
+    <string name="bt_scan_stop">Stop Scan</string>
+    <string name="bt_open_settings">Bluetooth Settings</string>
+    <string name="bt_paired_devices">Previously Paired Devices</string>
+    <string name="bt_discovered_devices">Discovered Devices</string>
+
+    <string name="battery_left">Left Earbud</string>
+    <string name="battery_right">Right Earbud</string>
+    <string name="battery_case">Charging Case</string>
+    <string name="battery_combined">Combined / Headset</string>
+    <string name="battery_unavailable">Unavailable</string>
+    <string name="battery_history">Battery History</string>
+
+    <string name="status_supported">Supported</string>
+    <string name="status_unsupported">Not Supported on This Device</string>
+    <string name="status_pending">Pending Device Integration</string>
+
+    <string name="find_my_location_disclaimer">Shows the phone\'s last recorded location when your earbuds connected or disconnected — not GPS inside the earbuds.</string>
+    <string name="security_pairing_disclaimer">App PIN protects this companion app and logs unauthorized access attempts. It cannot prevent other phones from pairing directly with earbuds unless the earbuds\' firmware supports owner locking.</string>
+</resources>

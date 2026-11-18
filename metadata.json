@@ -1,0 +1,6 @@
+{
+  "name": "Hardik Buds Pro",
+  "description": "HARDIK BUDS PRO ULTRA — Luxury Bluetooth & BLE earbuds companion with real device discovery, battery telemetry, 10-band EQ, spatial audio tools, Find My Earbuds, and Keystore-backed security.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
