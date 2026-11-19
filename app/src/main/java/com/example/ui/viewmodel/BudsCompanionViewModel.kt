@@ -329,6 +329,14 @@ class BudsCompanionViewModel(application: Application) : AndroidViewModel(applic
         viewModelScope.launch { repo.deleteCustomEqPreset(id) }
     }
 
+    fun applyAndSaveAiPreset(preset: EqPreset) {
+        audio.applyPreset(preset)
+        viewModelScope.launch {
+            repo.saveCustomEqPreset(preset)
+            _uiMessage.value = "Applied & saved Gemini preset \"${preset.name}\""
+        }
+    }
+
     // Find My Earbuds
     fun refreshPhoneLocation() {
         _lastPhoneLocation.value = location.getLastKnownPhoneLocation()

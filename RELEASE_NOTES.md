@@ -12,5 +12,6 @@
 - **Smart Earbud Controls & 11-Brand Compatibility Registry**: Honest capability gating (`Supported`, `Pending Device Integration`, `Not Supported on This Device`) across 11 earbuds brands.
 - **Find My Earbuds**: Last-known phone location tracking on disconnect, Left/Right/Both finder tones, BLE Immediate Alert, and live RSSI proximity meter.
 - **Keystore Security Vault & Smart Notifications**: AES-GCM Keystore-backed 4/6-digit PIN with 5-attempt lockout, recovery phrase, Biometric authentication, Owner Device Registration, and 4 Android Notification Channels with custom sound selection.
+- **Gemini AI Acoustic Studio**: Integrated **Firebase AI Logic** (`gemini-3.8-flash`) and **Firebase App Check** for structured JSON 10-Band EQ curve generation and streaming Bluetooth/acoustic coaching grounded in live device telemetry.
 
 © 2026 HARDIK BUDS PRO. All Rights Reserved.

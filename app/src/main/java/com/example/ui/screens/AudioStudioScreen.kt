@@ -22,6 +22,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.AutoAwesome
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.GraphicEq
 import androidx.compose.material.icons.rounded.Headphones
@@ -87,6 +88,7 @@ fun AudioStudioScreen(
     onStopChannelTest: () -> Unit,
     onStartMicTest: () -> Unit,
     onStopMicTest: () -> Unit,
+    onOpenAiAssistant: () -> Unit,
     onHaptic: (Boolean) -> Unit
 ) {
     val tokens = LocalLuxuryTokens.current
@@ -160,17 +162,31 @@ fun AudioStudioScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text("10-Band Equalizer", style = MaterialTheme.typography.titleLarge)
-                        OutlinedButton(
-                            onClick = {
-                                onHaptic(false)
-                                showSaveDialog = true
-                            },
-                            shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.testTag("save_eq_preset_btn")
-                        ) {
-                            Icon(Icons.Rounded.Add, contentDescription = null, modifier = Modifier.size(16.dp))
-                            Spacer(Modifier.width(4.dp))
-                            Text("Save Preset")
+                        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            OutlinedButton(
+                                onClick = {
+                                    onHaptic(false)
+                                    onOpenAiAssistant()
+                                },
+                                shape = RoundedCornerShape(12.dp),
+                                modifier = Modifier.testTag("audio_ai_tune_btn")
+                            ) {
+                                Icon(Icons.Rounded.AutoAwesome, contentDescription = null, modifier = Modifier.size(16.dp))
+                                Spacer(Modifier.width(4.dp))
+                                Text("AI Tune")
+                            }
+                            OutlinedButton(
+                                onClick = {
+                                    onHaptic(false)
+                                    showSaveDialog = true
+                                },
+                                shape = RoundedCornerShape(12.dp),
+                                modifier = Modifier.testTag("save_eq_preset_btn")
+                            ) {
+                                Icon(Icons.Rounded.Add, contentDescription = null, modifier = Modifier.size(16.dp))
+                                Spacer(Modifier.width(4.dp))
+                                Text("Save")
+                            }
                         }
                     }
 

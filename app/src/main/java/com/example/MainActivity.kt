@@ -68,10 +68,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.data.ai.configureAppCheck
 import com.example.ui.components.AtmosphericBackdrop
 import com.example.ui.components.DynamicIslandPill
 import com.example.ui.components.rememberAppHaptic
 import com.example.ui.navigation.AppRoute
+import com.example.ui.screens.AiAssistantScreen
 import com.example.ui.screens.AnimatedSplashOverlay
 import com.example.ui.screens.AudioStudioScreen
 import com.example.ui.screens.ConnectionPopupModal
@@ -85,6 +87,7 @@ import com.example.ui.screens.SmartControlsScreen
 import com.example.ui.theme.HardikBudsProTheme
 import com.example.ui.theme.LocalLuxuryTokens
 import com.example.ui.viewmodel.BudsCompanionViewModel
+import com.example.ui.viewmodel.GeminiAudioAssistantViewModel
 import kotlinx.coroutines.delay
 import java.util.Locale
 
@@ -113,6 +116,7 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        configureAppCheck(this, intent)
         enableEdgeToEdge()
 
         setContent {
@@ -405,6 +409,7 @@ private fun HardikBudsAppShell(
                                     onDisconnectCurrent = viewModel::disconnectCurrent,
                                     onOpenBluetoothSettings = viewModel::openBluetoothSettings,
                                     onPreviewPopup = viewModel::openAnimationPreviewPopup,
+                                    onOpenAiAssistant = { navController.navigate(AppRoute.AiAssistant) },
                                     onHaptic = onHaptic
                                 )
                             }
@@ -427,6 +432,7 @@ private fun HardikBudsAppShell(
                                     onStopChannelTest = viewModel::stopChannelTest,
                                     onStartMicTest = viewModel::startMicTest,
                                     onStopMicTest = viewModel::stopMicTest,
+                                    onOpenAiAssistant = { navController.navigate(AppRoute.AiAssistant) },
                                     onHaptic = onHaptic
                                 )
                             }
@@ -505,6 +511,30 @@ private fun HardikBudsAppShell(
                             composable<AppRoute.DeviceCompatibility> {
                                 DeviceCompatibilityScreen(
                                     onBack = { navController.popBackStack() }
+                                )
+                            }
+                            composable<AppRoute.AiAssistant> {
+                                val aiViewModel: GeminiAudioAssistantViewModel = viewModel()
+                                val chatState by aiViewModel.chatState.collectAsStateWithLifecycle()
+                                val messages by aiViewModel.messages.collectAsStateWithLifecycle()
+                                val eqTuneState by aiViewModel.eqTuneState.collectAsStateWithLifecycle()
+
+                                AiAssistantScreen(
+                                    connectedEarbud = connectedEarbud,
+                                    audioState = audioState,
+                                    chatState = chatState,
+                                    messages = messages,
+                                    eqTuneState = eqTuneState,
+                                    onGenerateEq = { goal ->
+                                        aiViewModel.generateEqPreset(goal, connectedEarbud)
+                                    },
+                                    onApplyAndSaveEq = viewModel::applyAndSaveAiPreset,
+                                    onSendQuestion = { question ->
+                                        aiViewModel.sendQuestion(question, connectedEarbud, audioState)
+                                    },
+                                    onClearChat = aiViewModel::clearChat,
+                                    onBack = { navController.popBackStack() },
+                                    onHaptic = onHaptic
                                 )
                             }
                         }

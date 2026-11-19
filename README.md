@@ -44,6 +44,11 @@
    - 5-attempt rate-limiting lockout, recovery phrase reset, and AndroidX `BiometricPrompt`
    - Owner device registration, security audit log, and Android 8+ Notification Channels with custom sound picker.
 
+8. **Gemini AI Acoustic Studio (Firebase AI Logic + App Check)**
+   - Powered by **Firebase AI Logic** (`Firebase.ai`, `gemini-3.8-flash`) with **Firebase App Check** (`DebugAppCheckProviderFactory` in debug, `RecaptchaAppCheckProviderFactory` in release)
+   - **AI 10-Band EQ Designer**: Generates structured JSON 10-band EQ curves, BassBoost, and Spatializer settings applied directly to Android `AudioFX` DSP and saved to Room
+   - **Earbuds & Acoustics Coach**: Streaming Q&A grounded with live connected earbuds telemetry and AudioFX state.
+
 ---
 
 ## Documentation Index

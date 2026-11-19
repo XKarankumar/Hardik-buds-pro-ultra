@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Network access for Firebase AI Logic (Gemini API via App Check) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Bluetooth permissions for Android 8.0–11 (API 26–30) -->
     <uses-permission
         android:name="android.permission.BLUETOOTH"

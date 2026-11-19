@@ -11,4 +11,5 @@ sealed interface AppRoute {
     @Serializable data object Security : AppRoute
     @Serializable data object Settings : AppRoute
     @Serializable data object DeviceCompatibility : AppRoute
+    @Serializable data object AiAssistant : AppRoute
 }

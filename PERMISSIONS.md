@@ -12,6 +12,7 @@ HARDIK BUDS PRO ULTRA follows **Google Play Developer Program** least-privilege 
 | `RECORD_AUDIO` | All supported | Live Audio Studio Microphone Test & Bluetooth SCO/BLE mic level diagnostics | Runtime prompt when starting Mic Test |
 | `MODIFY_AUDIO_SETTINGS` | All supported | Routing microphone test through Bluetooth SCO / Communication device | Install-time normal permission |
 | `VIBRATE` | All supported | Haptic feedback and security alert notification vibration | Install-time normal permission |
+| `INTERNET` | All supported | HTTPS inference for Gemini AI Acoustic Studio via Firebase AI Logic & App Check | Install-time normal permission |
 
 ## Excluded Broad Permissions
 - **No `READ_EXTERNAL_STORAGE` / `READ_MEDIA_*`**: Complies with Play Policy scoped access.

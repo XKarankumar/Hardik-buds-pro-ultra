@@ -1,10 +1,14 @@
 package com.example
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToIndex
+import androidx.compose.ui.test.performScrollToNode
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,6 +28,20 @@ class MainActivityComposeTest {
         composeRule.waitForIdle()
 
         composeRule.onNodeWithText("HARDIK BUDS PRO ULTRA").assertIsDisplayed()
+        composeRule.onNodeWithTag("scan_toggle_button").assertIsDisplayed()
+
+        composeRule.onNodeWithTag("open_ai_assistant_btn").performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithText("Gemini AI Acoustic Studio").assertIsDisplayed()
+        composeRule.onNodeWithText("AI 10-Band EQ Designer").assertIsDisplayed()
+        composeRule.onNodeWithTag("ai_assistant_list")
+            .performScrollToNode(hasText("Earbuds & Acoustics Coach"))
+        composeRule.waitForIdle()
+        composeRule.onNodeWithText("Earbuds & Acoustics Coach").assertIsDisplayed()
+        composeRule.onNodeWithTag("ai_assistant_list").performScrollToIndex(0)
+        composeRule.waitForIdle()
+        composeRule.onNodeWithContentDescription("Back").performClick()
+        composeRule.waitForIdle()
         composeRule.onNodeWithTag("scan_toggle_button").assertIsDisplayed()
 
         composeRule.onNodeWithTag("nav_audio").performClick()

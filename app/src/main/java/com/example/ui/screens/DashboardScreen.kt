@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.BluetoothSearching
+import androidx.compose.material.icons.rounded.AutoAwesome
 import androidx.compose.material.icons.rounded.BatteryAlert
 import androidx.compose.material.icons.rounded.Bluetooth
 import androidx.compose.material.icons.rounded.BluetoothConnected
@@ -96,6 +97,7 @@ fun DashboardScreen(
     onDisconnectCurrent: () -> Unit,
     onOpenBluetoothSettings: () -> Unit,
     onPreviewPopup: () -> Unit,
+    onOpenAiAssistant: () -> Unit,
     onHaptic: (Boolean) -> Unit
 ) {
     val tokens = LocalLuxuryTokens.current
@@ -153,35 +155,67 @@ fun DashboardScreen(
                                 color = Color(0xFFD5DDEA)
                             )
                         }
-                        Surface(
-                            onClick = {
-                                onHaptic(false)
-                                onPreviewPopup()
-                            },
-                            shape = CircleShape,
-                            color = Color(0x990D121D),
-                            border = BorderStroke(1.dp, tokens.accent.copy(alpha = 0.55f)),
+                        Row(
                             modifier = Modifier
                                 .align(Alignment.TopEnd)
-                                .padding(10.dp)
-                                .testTag("preview_popup_button")
+                                .padding(10.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            Row(
-                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(5.dp)
+                            Surface(
+                                onClick = {
+                                    onHaptic(false)
+                                    onOpenAiAssistant()
+                                },
+                                shape = CircleShape,
+                                color = Color(0xBB0D121D),
+                                border = BorderStroke(1.dp, tokens.accent.copy(alpha = 0.7f)),
+                                modifier = Modifier.testTag("open_ai_assistant_btn")
                             ) {
-                                Icon(
-                                    imageVector = Icons.Rounded.Visibility,
-                                    contentDescription = "Preview connection popup",
-                                    tint = tokens.accent,
-                                    modifier = Modifier.size(14.dp)
-                                )
-                                Text(
-                                    text = "Popup UI",
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = Color.White
-                                )
+                                Row(
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(5.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.AutoAwesome,
+                                        contentDescription = "Open Gemini AI Studio",
+                                        tint = tokens.accent,
+                                        modifier = Modifier.size(14.dp)
+                                    )
+                                    Text(
+                                        text = "Gemini AI",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = Color.White
+                                    )
+                                }
+                            }
+                            Surface(
+                                onClick = {
+                                    onHaptic(false)
+                                    onPreviewPopup()
+                                },
+                                shape = CircleShape,
+                                color = Color(0x990D121D),
+                                border = BorderStroke(1.dp, tokens.accent.copy(alpha = 0.55f)),
+                                modifier = Modifier.testTag("preview_popup_button")
+                            ) {
+                                Row(
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(5.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Visibility,
+                                        contentDescription = "Preview connection popup",
+                                        tint = tokens.accent,
+                                        modifier = Modifier.size(14.dp)
+                                    )
+                                    Text(
+                                        text = "Popup UI",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = Color.White
+                                    )
+                                }
                             }
                         }
                     }
